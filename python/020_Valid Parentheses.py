@@ -24,4 +24,26 @@ Constraints:
 
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
+
 """ 
+class Solution():
+    #(stack) 使用append,pop的組合，用 list 拼湊出 Queue(先進先出) 與 Stack(先進後出)
+    def isValid(self,s):   
+        checkdict = {'(':')',
+                     '[':']',
+                     '{':'}'}  
+        stack = [] # append <-> pop(-1) #FILO Last out!!!
+        for ele in s:
+            if ele in checkdict.keys():
+                stack.append(checkdict[ele])
+            elif not len(stack)==0 and stack.pop(-1) == ele:
+                pass
+            else:
+                return False
+        return len(stack)==0
+
+
+if __name__ == 'main':
+    sol = Solution()
+    print(sol.isValid(s = "(){}"))
+    print(sol.isValid(s = "({}){]"))

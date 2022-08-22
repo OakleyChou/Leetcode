@@ -22,3 +22,29 @@ Constraints:
 
 1 <= n <= 45
 """
+
+
+class Solution():
+#一次走一or二步:這一步走法=前一步+前兩步走法    
+#f(n) = f(n-1)+f(n-2)
+#    def climbStairs(self,n: int):
+#        pre = cur = 1
+#        for i in range(1,n):
+#            pre, cur = cur, pre+cur
+#        return cur
+    #動態紀錄:記憶體耗較小
+    def climbStairs(self,n: int):
+        if n==0 or n==1 or n==2 :
+            return n
+        else:
+            steps = [1, 1]
+            for i in range(2,n+1):
+                steps.append(steps[i-1] + steps[i-2])
+            return steps[n]
+            
+
+
+if __name__ == 'main':
+    sol = Solution()
+    print(sol.climbStairs(n=5))
+    print(sol.climbStairs(n=50))

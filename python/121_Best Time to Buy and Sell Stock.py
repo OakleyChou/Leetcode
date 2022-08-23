@@ -19,3 +19,16 @@ Constraints:
 1 <= prices.length <= 105
 0 <= prices[i] <= 104
 """
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    # begin
+    s = Solution()
+    print( s.twoSum(nums = [2,7,11,15], target = 18))

@@ -21,14 +21,37 @@ Constraints:
 """
 
 
-
-
-
-
-
+class Solution():
+#    #每天都計算先前買的利潤,太耗時,time limit Exceeded
+#    def maxProfit(self, prices):
+#        if len(prices) <= 1:
+#            return 0
+#        else :
+#            profit = []
+#            for i in range(len(prices)-1):
+#                profit.append(max( [p - prices[i] for p in prices[i+1:]]))
+#            if max(profit) <0 :
+#                return 0
+#            else:
+#                return max(profit)
+    #只需保存先前最便宜價,最高利潤                     
+    def maxProfit(self, prices):
+        if not prices or len(prices) < 2:
+            return 0
+        min_buy = prices[0]
+        best_profit = 0
+        for i in range(len(prices)):
+            if i == 0 :
+                continue
+            else:
+                min_buy = min(min_buy, prices[i])
+                best_profit = max(best_profit, prices[i] - min_buy)
+        return best_profit
 
 
 if __name__ == '__main__':
-    # begin
     s = Solution()
-    print( s.twoSum(nums = [2,7,11,15], target = 18))
+    print( s.maxProfit(prices =  [7,1,5,3,6,4]))
+
+
+

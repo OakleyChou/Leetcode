@@ -19,7 +19,20 @@ Constraints:
 
 """
 
-
+class Solution:
+    #二分搜索法
+    def mySqrt(self, x) :
+        head = 0 
+        tail = x + 1
+        while head < tail:
+            mid = head + (tail - head) // 2
+            if mid ** 2 == x:
+                return mid
+            elif mid**2 > x :
+                tail = mid 
+            elif mid**2 < x :
+                head = mid + 1
+        return tail - 1
 
 
 

@@ -1,3 +1,4 @@
+/*
 Table: Person
 
 +-------------+---------+
@@ -9,10 +10,8 @@ Table: Person
 +-------------+---------+
 personId is the primary key column for this table.
 This table contains information about the ID of some persons and their first and last names.
- 
 
 Table: Address
-
 +-------------+---------+
 | Column Name | Type    |
 +-------------+---------+
@@ -25,7 +24,8 @@ addressId is the primary key column for this table.
 Each row of this table contains information about the city and state of one person with ID = PersonId.
  
 
-Write an SQL query to report the first name, last name, city, and state of each person in the Person table. If the address of a personId is not present in the Address table, report null instead.
+Write an SQL query to report the first name, last name, city, and state of each person in the Person table. 
+If the address of a personId is not present in the Address table, report null instead.
 
 Return the result table in any order.
 
@@ -58,3 +58,12 @@ Output:
 Explanation: 
 There is no address in the address table for the personId = 1 so we return null in their city and state.
 addressId = 1 contains information about the address of personId = 2.
+*/
+
+SELECT firstName, lastName, city, state
+    FROM Person 
+       LEFT JOIN Address 
+       ON Person.personId = Address.personId
+
+
+

@@ -28,3 +28,17 @@ Constraints:
 1 <= columnNumber <= 2**31 - 1
 
 """
+
+class Solution():
+    #從最後一位開始找
+    def convertToTitle(self,columnNumber: int):
+        string = ''
+        while columnNumber > 0:    
+            columnNumber -= 1
+            string = chr(65 + columnNumber % 26) + string
+            columnNumber = columnNumber // 26
+        return string
+
+if __name__ == '__main__':
+    s = Solution()
+    print( s.convertToTitle(columnNumber = 701 ))
